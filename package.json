@@ -1,0 +1,24 @@
+{
+  "name": "employee-service",
+  "version": "1.0.0",
+  "description": "Employee service",
+  "main": "app.js",
+  "scripts": {
+    "test": "node_modules/.bin/cucumber-js test/features -r test/steps",
+    "dev": "nodemon aap.js",
+    "start": "node app.js"
+  },
+  "author": "Akash Shrivastava",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "build-url": "^2.0.0",
+    "cucumber": "^6.0.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4",
+    "pg": "^8.3.0",
+    "sequelize": "^6.3.3",
+    "sequelize-cli": "^6.2.0"
+  }
+}

@@ -1,0 +1,13 @@
+version: '2.1'
+services:
+    employee-service:
+       container_name: employee.app.service
+       build:
+           context:
+           dockerfile: Dockerfile
+       ports: 
+           - 3000
+networks:
+    default:
+       external:
+            name: shared-network

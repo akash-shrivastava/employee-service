@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+    version: 1.0.0
+    title: Employee
+    description: The employee mService maintain information about employee.One can add or delete employee.
+servers: 
+    - description: "API Server"
+      url: "http://employee-service/v1"
+paths:
+    "/employee":
+        delete:
+            tags:
+                - Employee
+            summary: "delete last employee from the list"
+            responses:
+                "200":
+                   $ref: "#/components/responses/200Success"
+                "404":
+                   $ref: "#/components/responses/404Error"
+                "500":
+                   $ref: "#/components/responses/500Error"
+        post:
+            tags:
+                - Employee
+            summary: "add a new employee in the list"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                          type: object
+                          required: 
+                              - name
+                          properties:
+                            name:
+                              description: Name of the employee.
+                              type: string
+            responses:
+                "200":
+                   $ref: "#/components/responses/200Success"
+                "404":
+                   $ref: "#/components/responses/404Error"
+                "500":
+                   $ref: "#/components/responses/500Error"
+                "400":
+                   $ref: "#/components/responses/400Error"
+                "406":
+                   $ref: "#/components/responses/406Error"
+                   
+components:
+  
+    responses:
+        400Error:
+            description: invalid request
+            content:
+                application/json:
+                     schema:
+                        type: object
+                        properties:
+                           message:
+                               type: string
+      
+        404Error:
+            description: resource not found
+            content:
+                application/json:
+                     schema:
+                        type: object
+                        properties:
+                           message:
+                               type: string
+        
+        500Error:
+            description: invalid server error
+            content:
+                application/json:
+                     schema:
+                        type: object
+                        properties:
+                           message:
+                               type: string
+                               
+                               
+        200Success:
+            description: success
+            content:
+                application/json:
+                     schema:
+                        type: object
+                        properties:
+                           message:
+                               type: string 
+        
+        406Error:
+            description: not acceptable
+            content:
+                application/json:
+                     schema:
+                        type: object
+                        properties:
+                           message:
+                               type: string
+                               
+          
+                          
