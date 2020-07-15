@@ -17,7 +17,8 @@
     "username": "employee_user",
     "password": "employee",
     "database": "employee",
-    "host": "employee-service.postgres",
-    "dialect": "postgres"
+    "host": "192.168.99.101",
+    "dialect": "postgres",
+    "port": "30432"
   }
 }

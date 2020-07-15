@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akash
+spec:
+  selector:
+    matchLabels:
+      app: employee-service
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: employee-service
+    spec:
+      containers:
+      - name: employee-service
+        image: my-image:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
