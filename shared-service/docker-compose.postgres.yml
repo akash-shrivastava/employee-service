@@ -1,14 +1,16 @@
 version: '2.1'
 services:
     postgres:
-        container_name: nokia-service.postgres
+        container_name: employee-service.postgres
         build:
             context: .
             dockerfile: Postgres.Dockerfile
         ports:
             - 5434:5432
         volumes:
-            - ./postgres-data:/var/lib/postgresql/data
+            - mnt/sda1/var/lib/docker/volumes/psql/_data
+        environment: 
+            POSTGRES_HOST_AUTH_METHOD: 'trust'
         networks:
             - shared-network
 networks:

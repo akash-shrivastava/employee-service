@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+    employee-service:
+       container_name: employee.app.service.test
+       build:
+           context: .
+           dockerfile: TEST.Dockerfile
+       networks:
+           - shared-network
+networks:
+    shared-network:
+            name: shared-network

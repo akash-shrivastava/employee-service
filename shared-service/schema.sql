@@ -1,3 +1,3 @@
-CREATE DATABASE postgres;
-CREATE USER postgres with password 'postgres' SUPERUSER;
-GRANT ALL PRIVILEGES ON DATABASE postgres TO postgres;
+CREATE DATABASE employee;
+CREATE USER employee_user with password 'employee' SUPERUSER;
+GRANT ALL PRIVILEGES ON DATABASE employee TO employee_user;

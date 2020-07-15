@@ -1,12 +1,12 @@
-version: '2.1'
+version: "2.1"
 services:
     employee-service:
        container_name: employee.app.service
        build:
-           context:
+           context: .
            dockerfile: Dockerfile
        ports: 
-           - 3000
+           - 3000:3000
 networks:
     default:
        external:
