@@ -24,6 +24,7 @@ Employee Service implement stack (LIFO) using micro service architecture and dep
 1. Setup crendential for postgres database
 2. Update relative information in config/app.config.js
 3. Run 'npm run dev' to run locally.
+4. Run 'npm run test' to run test cases locally.
 
 ## Pre requisties in docker   
 1. Download and install docker from https://docs.docker.com/docker-for-windows/install/
