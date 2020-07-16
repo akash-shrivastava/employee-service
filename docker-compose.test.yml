@@ -7,6 +7,8 @@ services:
            dockerfile: TEST.Dockerfile
        networks:
            - shared-network
+       env_file:
+           - production.env 
 networks:
     shared-network:
             name: shared-network

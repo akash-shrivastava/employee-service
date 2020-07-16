@@ -1,7 +1,8 @@
 const fetch = require("node-fetch");
 const buildUrl = require("build-url");
+const { config } = require("../../config/app.config");
 
-const baseUrl = "http://localhost:3000/employee-service/";
+const baseUrl = config.get("test.url");
 //const baseUrl = "http://192.168.99.100:3000/employee-service/";
 let acceptType;
 let requestMethod;

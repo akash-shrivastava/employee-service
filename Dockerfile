@@ -6,5 +6,6 @@ RUN npm config set -g production true
 RUN npm install
 COPY app ./app
 COPY db ./db
+COPY config ./config
 COPY app.js .
 ENTRYPOINT ["npm", "start"]
