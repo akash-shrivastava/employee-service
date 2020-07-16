@@ -6,6 +6,9 @@
 [Pre Requisties for the service in docker](#pre-requisties-in-docker)   
 [Using the service with Docker Component](#using-the-service-with-docker-component)   
 [Down all the Docker Component](#down-all-the-docker-component)   
+[Pre Requisties for the service to deploy in minikube](#pre-requisties-in-minikube)   
+[Deploy in minikube](#deploy-in-minikube) 
+
 
 
 # Introduction   
@@ -47,3 +50,45 @@ Employee Service implement stack (LIFO) using micro service architecture and dep
     docker-compose -f docker-compose.test.yml down
 
 
+## Pre requisties in minikube
+1. Download kubectl from https://kubernetes.io/docs/tasks/tools/install-kubectl/
+2. Put the kubectl download file in a localtion example C:\kube
+3. Download minikube from https://kubernetes.io/docs/tasks/tools/install-minikube/
+4. Put the minikube download file in same location of kubectl file i.e. C:\kube
+5. Set the enivroment path
+
+## Deploy in minikube
+1. start the minikube 'minikube start'
+2. Get the ip of minikube 'minikube ip'
+3. start minikube dashboard for better view 'minikube dashboard'
+4. create your own namespace in minikube 'kubectl create namespace <insert-some-namespace-name>
+5. Deploy the postgres in minikube   
+
+        kubectl -f ./postgres-configmap.yaml  --namespace= <insert-namespace-created>
+6. update postgres configuration in config/app.config.js
+  
+  example:
+        postgres:{
+	          username: employee_user // config file postgres in minikube
+	          password: employee      // config file postgres in minikube
+	          host: 10.101.241.80    // service of postgres in minikube dashboard has information about clusterIP
+	          port: 5432             // service of postgres in minikube dashboard has information about port
+                }
+7. build the app image for deployment in minikube
+
+                minikube docker-env
+
+                minikube docker-env | Invoke-Expression
+
+                docker build -f .\Dockerfile -t <tage-name>:<version> .
+
+8. update image in deployment.yaml
+
+                image: <tag-name>:<version>
+9. deploy the image in minikube namespace as deployment
+
+        kubectl apply -f .\deployment.yaml --namespace=<insert-namespace-created>
+10. expose the image deployed in pod as service type load balancer to access from outside minikube
+
+        kubectl expose deployment <app-name> --type=LoadBalancer --namespace=<insert-namespace-created>
+11. to hit end point use ip of minikube ie. 'minikube ip' and exposed port of image running in pod from services of app.
