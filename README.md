@@ -68,13 +68,13 @@ Employee Service implement stack (LIFO) using micro service architecture and dep
         kubectl -f ./postgres-configmap.yaml  --namespace= <insert-namespace-created>
 6. update postgres configuration in config/app.config.js
   
-  example:
-        postgres:{
-	          username: employee_user // config file postgres in minikube
-	          password: employee      // config file postgres in minikube
-	          host: 10.101.241.80    // service of postgres in minikube dashboard has information about clusterIP
-	          port: 5432             // service of postgres in minikube dashboard has information about port
-                }
+                example:
+                   postgres:{   
+                         username: employee_user    // config file postgres in minikube   
+                         password: employee        // config file postgres in minikube   
+                         host: 10.101.241.80      // service of postgres in minikube dashboard has information about clusterIP  
+                         port: 5432             // service of postgres in minikube dashboard has information about port   
+                         }  
 7. build the app image for deployment in minikube
 
                 minikube docker-env
